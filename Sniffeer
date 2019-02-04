@@ -1,0 +1,8 @@
+from scapy.all import *       #import necessary scapy functions
+def snf(pkt):                 #define the working function
+   conf.iface='wlan0'
+   if pkt.haslayer(TCP):
+      dtd=pkt[TCP]
+   print ('TCP details:', dtd)
+
+sniff (filter='tcp port 21' prn=snf)          #call the sniff command
